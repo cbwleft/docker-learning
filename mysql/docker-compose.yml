@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  master:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    restart: always
+    volumes:
+      - "./conf.d:/etc/mysql/conf.d"
+      - "./data:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+  slave:
+     image: mysql:5.7
+     ports:
+       - "3307:3306"
+     restart: always
+     environment:
+      MYSQL_ROOT_PASSWORD: root
