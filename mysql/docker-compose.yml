@@ -22,4 +22,4 @@ services:
       - "./slave/slave.sql:/docker-entrypoint-initdb.d/slave.sql"
       - "./slave/data:/var/lib/mysql"
      environment:
-      MYSQL_ROOT_PASSWORD: root
+       MYSQL_ROOT_PASSWORD: root
