@@ -7,7 +7,7 @@ services:
       - "3306:3306"
     restart: always
     volumes:
-      - "./conf.d:/etc/mysql/conf.d"
+      - "./my.cnf:/etc/mysql/conf.d/my.cnf"
       - "./data:/var/lib/mysql"
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -17,5 +17,9 @@ services:
      ports:
        - "3307:3306"
      restart: always
+     volumes:
+      - "./slave/my.cnf:/etc/mysql/conf.d/my.cnf"
+      - "./slave/slave.sql:/docker-entrypoint-initdb.d/slave.sql"
+      - "./slave/data:/var/lib/mysql"
      environment:
       MYSQL_ROOT_PASSWORD: root
